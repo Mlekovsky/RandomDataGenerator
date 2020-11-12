@@ -43,6 +43,10 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
+            "Faker.Net": {
+              "target": "Package",
+              "version": "[1.3.93, )"
+            },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[3.1.2, )"
@@ -52,6 +56,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[3.1.2, )"
+            },
+            "NBuilder": {
+              "target": "Package",
+              "version": "[6.1.0, )"
             }
           },
           "imports": [

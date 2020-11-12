@@ -41,4 +41,7 @@ C:\Projects\RandomDataGenerator\RandomDataGenerator\RandomDataGenerator\bin\Debu
 C:\Projects\RandomDataGenerator\RandomDataGenerator\RandomDataGenerator\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Projects\RandomDataGenerator\RandomDataGenerator\RandomDataGenerator\obj\Debug\netcoreapp3.1\RandomDataGenerator.csproj.CopyComplete
 C:\Projects\RandomDataGenerator\RandomDataGenerator\RandomDataGenerator\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
+C:\Projects\RandomDataGenerator\RandomDataGenerator\RandomDataGenerator\bin\Debug\netcoreapp3.1\FizzWare.NBuilder.dll
 C:\Projects\RandomDataGenerator\RandomDataGenerator\RandomDataGenerator\obj\Debug\netcoreapp3.1\RandomDataGenerator.csproj.CoreCompileInputs.cache
+C:\Projects\RandomDataGenerator\RandomDataGenerator\RandomDataGenerator\bin\Debug\netcoreapp3.1\Faker.Net.Core.3.1.dll
+C:\Projects\RandomDataGenerator\RandomDataGenerator\RandomDataGenerator\bin\Debug\netcoreapp3.1\de-DE\Faker.Net.Core.3.1.resources.dll
