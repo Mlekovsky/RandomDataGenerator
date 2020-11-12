@@ -1,0 +1,13 @@
+C:\Projects\RandomDataGenerator\RandomDataGenerator\RandomDataGenerator\bin\Debug\netcoreapp3.1\RandomDataGenerator.exe
+C:\Projects\RandomDataGenerator\RandomDataGenerator\RandomDataGenerator\bin\Debug\netcoreapp3.1\RandomDataGenerator.deps.json
+C:\Projects\RandomDataGenerator\RandomDataGenerator\RandomDataGenerator\bin\Debug\netcoreapp3.1\RandomDataGenerator.runtimeconfig.json
+C:\Projects\RandomDataGenerator\RandomDataGenerator\RandomDataGenerator\bin\Debug\netcoreapp3.1\RandomDataGenerator.runtimeconfig.dev.json
+C:\Projects\RandomDataGenerator\RandomDataGenerator\RandomDataGenerator\bin\Debug\netcoreapp3.1\RandomDataGenerator.dll
+C:\Projects\RandomDataGenerator\RandomDataGenerator\RandomDataGenerator\bin\Debug\netcoreapp3.1\RandomDataGenerator.pdb
+C:\Projects\RandomDataGenerator\RandomDataGenerator\RandomDataGenerator\obj\Debug\netcoreapp3.1\RandomDataGenerator.csprojAssemblyReference.cache
+C:\Projects\RandomDataGenerator\RandomDataGenerator\RandomDataGenerator\obj\Debug\netcoreapp3.1\RandomDataGenerator.AssemblyInfoInputs.cache
+C:\Projects\RandomDataGenerator\RandomDataGenerator\RandomDataGenerator\obj\Debug\netcoreapp3.1\RandomDataGenerator.AssemblyInfo.cs
+C:\Projects\RandomDataGenerator\RandomDataGenerator\RandomDataGenerator\obj\Debug\netcoreapp3.1\RandomDataGenerator.csproj.CoreCompileInputs.cache
+C:\Projects\RandomDataGenerator\RandomDataGenerator\RandomDataGenerator\obj\Debug\netcoreapp3.1\RandomDataGenerator.dll
+C:\Projects\RandomDataGenerator\RandomDataGenerator\RandomDataGenerator\obj\Debug\netcoreapp3.1\RandomDataGenerator.pdb
+C:\Projects\RandomDataGenerator\RandomDataGenerator\RandomDataGenerator\obj\Debug\netcoreapp3.1\RandomDataGenerator.genruntimeconfig.cache
