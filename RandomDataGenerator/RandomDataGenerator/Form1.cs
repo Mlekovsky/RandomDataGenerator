@@ -72,7 +72,7 @@ namespace RandomDataGenerator
                                 .All()
                                 .With(b => b.Tcustomer = Pick<Tcustomer>.RandomItemFrom(context.Tcustomer.ToList()))
                                 .With(b => b.Tbookstate = Pick<Tbookstate>.RandomItemFrom(context.Tbookstate.ToList()))
-                                .With(b => b.Booked = (short)random.Next(0, 2))
+                                .With(b => b.Booked = random.Next(0, 2))
                                 .With(b => b.CreateUser = Faker.Name.First())
                                 .With(b => b.Rowversion = numberGen.Next(1, 100))
                                 .With(b => b.UpdateDate = DateTime.Now.AddDays(-numberGen.Next(1, 100)))
@@ -96,6 +96,7 @@ namespace RandomDataGenerator
                                     .With(p => p.Firstname = Faker.Name.First())
                                     .With(p => p.Lastname = Faker.Name.Last())
                                     .With(p => p.CreateUser = Faker.Name.First())
+                                    .With(p => p.Pesel = Faker.Identification.BulgarianPin())
                                     .With(p => p.Rowversion = numberGen.Next(1, 100))
                                     .With(p => p.UpdateDate = DateTime.Now.AddDays(-numberGen.Next(1, 100)))
                                     .With(p => p.UpdateUser = Faker.Name.First())
@@ -110,6 +111,7 @@ namespace RandomDataGenerator
                                     .All()
                                     .With(p => p.IsCustomer = 0) //Domyślnie nikt nie jest płatnikiem, losujemy potem jedną osobę która nim zostanie
                                     .With(p => p.Tbooking = booking)
+                                    .With(p => p.Pesel = Faker.Identification.BulgarianPin())
                                     .With(p => p.Firstname = Faker.Name.First())
                                     .With(p => p.Lastname = Faker.Name.Last())
                                     .With(p => p.CreateUser = Faker.Name.First())
@@ -123,7 +125,7 @@ namespace RandomDataGenerator
                                 context.Tbookingpax.AddRange(passengers);
 
                                 //Losujemy rodzaj wycieczki (tylko przelot/ przelot+hotel / sam hotel)
-                                var triptype = (TripTypeEnum)random.Next(0, 4); //0 - 3
+                                var triptype = (TripTypeEnum)random.Next(0, 3); //0 - 3
 
                                 Tbookelement hotel;
                                 Tbookelement flight;
@@ -139,6 +141,9 @@ namespace RandomDataGenerator
                                         .With(e => e.Tbooking = booking)
                                         .With(e => e.Thotel = Pick<Thotel>.RandomItemFrom(context.Thotel.ToList()))
                                         .With(e => e.CreateUser = Faker.Name.First())
+                                        .With(e => e.Tflight = null)
+                                        .With(e => e.TflightId = null)
+                                        .With(e => e.TbookeltypeId = null)
                                         .With(e => e.Rowversion = numberGen.Next(1, 100))
                                         .With(e => e.UpdateDate = DateTime.Now.AddDays(-numberGen.Next(1, 100)))
                                         .With(e => e.UpdateUser = Faker.Name.First())
@@ -147,6 +152,9 @@ namespace RandomDataGenerator
                                         flight = Builder<Tbookelement>.CreateNew()
                                         .With(e => e.Tbooking = booking)
                                         .With(e => e.Tflight = Pick<Tflight>.RandomItemFrom(context.Tflight.ToList()))
+                                        .With(e => e.Thotel = null)
+                                        .With(e => e.ThotelId = null)
+                                        .With(e => e.TbookeltypeId = null)
                                         .With(e => e.CreateUser = Faker.Name.First())
                                         .With(e => e.Rowversion = numberGen.Next(1, 100))
                                         .With(e => e.UpdateDate = DateTime.Now.AddDays(-numberGen.Next(1, 100)))
@@ -162,6 +170,9 @@ namespace RandomDataGenerator
                                         hotel = Builder<Tbookelement>.CreateNew()
                                         .With(e => e.Tbooking = booking)
                                         .With(e => e.Thotel = Pick<Thotel>.RandomItemFrom(context.Thotel.ToList()))
+                                        .With(e => e.Tflight = null)
+                                        .With(e => e.TflightId = null)
+                                        .With(e => e.TbookeltypeId = null)
                                         .With(e => e.CreateUser = Faker.Name.First())
                                         .With(e => e.Rowversion = numberGen.Next(1, 100))
                                         .With(e => e.UpdateDate = DateTime.Now.AddDays(-numberGen.Next(1, 100)))
@@ -177,6 +188,9 @@ namespace RandomDataGenerator
                                         .With(e => e.Tbooking = booking)
                                         .With(e => e.Tflight = Pick<Tflight>.RandomItemFrom(context.Tflight.ToList()))
                                         .With(e => e.CreateUser = Faker.Name.First())
+                                        .With(e => e.Thotel = null)
+                                        .With(e => e.ThotelId = null)
+                                        .With(e => e.TbookeltypeId = null)
                                         .With(e => e.Rowversion = numberGen.Next(1, 100))
                                         .With(e => e.UpdateDate = DateTime.Now.AddDays(-numberGen.Next(1, 100)))
                                         .With(e => e.UpdateUser = Faker.Name.First())
@@ -210,6 +224,11 @@ namespace RandomDataGenerator
             {
                 MessageBox.Show("Podaj poprawną liczbę");
             }
+        }
+
+        private int GetNextSequenceValue()
+        {
+            throw new NotImplementedException();
         }
 
         //Ucinamy długość numerów ze względu na pole w bazie

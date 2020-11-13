@@ -15,7 +15,7 @@ namespace RandomDataGenerator.Models
         public int Bookno { get; set; }
         public int? TbookstateId { get; set; }
         public decimal? TotalPrice { get; set; }
-        public short? Booked { get; set; }
+        public int? Booked { get; set; }
         public string UpdateUser { get; set; }
         public DateTime? UpdateDate { get; set; }
         public int? TcustomerId { get; set; }
