@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 
 namespace RandomDataGenerator.Models
 {
+    [Serializable]
     public partial class Tbookstate
     {
         public Tbookstate()
@@ -16,7 +18,7 @@ namespace RandomDataGenerator.Models
         public DateTime? UpdateDate { get; set; }
         public decimal Rowversion { get; set; }
         public string CreateUser { get; set; }
-
+        [XmlIgnoreAttribute]
         public virtual ICollection<Tbooking> Tbooking { get; set; }
     }
 }

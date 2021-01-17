@@ -34,7 +34,18 @@ namespace RandomDataGenerator.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Server=MLEKOMASZINA\\SQLEXPRESS;Database=Aplikacje_bazodanowe;Trusted_Connection=True;");
+                //optionsBuilder.UseSqlServer("Server=MLEKOMASZINA\\SQLEXPRESS;Database=Aplikacje_bazodanowe;Trusted_Connection=True;");
+                optionsBuilder.UseOracle(@"User Id=s95571;Password=rg45a!kahe75;Data Source=(DESCRIPTION =
+(ADDRESS_LIST =
+(ADDRESS =
+(COMMUNITY = TCP)
+(PROTOCOL = TCP)
+(HOST = 217.173.198.135)
+(PORT = 1522)
+)
+)
+(CONNECT_DATA = (SID = orcltp))
+)");
             }
         }
 

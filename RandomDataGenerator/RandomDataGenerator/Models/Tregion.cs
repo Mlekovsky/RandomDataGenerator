@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 
 namespace RandomDataGenerator.Models
 {
+    [Serializable]
     public partial class Tregion
     {
         public Tregion()
@@ -17,8 +19,9 @@ namespace RandomDataGenerator.Models
         public DateTime? UpdateDate { get; set; }
         public decimal Rowversion { get; set; }
         public string CreateUser { get; set; }
-
+        [XmlIgnoreAttribute]
         public virtual Tcountry Tcountry { get; set; }
+        [XmlIgnoreAttribute]
         public virtual ICollection<Thotel> Thotel { get; set; }
     }
 }

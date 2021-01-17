@@ -42,6 +42,10 @@ C:\Projects\RandomDataGenerator\RandomDataGenerator\RandomDataGenerator\bin\Debu
 C:\Projects\RandomDataGenerator\RandomDataGenerator\RandomDataGenerator\obj\Debug\netcoreapp3.1\RandomDataGenerator.csproj.CopyComplete
 C:\Projects\RandomDataGenerator\RandomDataGenerator\RandomDataGenerator\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
 C:\Projects\RandomDataGenerator\RandomDataGenerator\RandomDataGenerator\bin\Debug\netcoreapp3.1\FizzWare.NBuilder.dll
-C:\Projects\RandomDataGenerator\RandomDataGenerator\RandomDataGenerator\obj\Debug\netcoreapp3.1\RandomDataGenerator.csproj.CoreCompileInputs.cache
 C:\Projects\RandomDataGenerator\RandomDataGenerator\RandomDataGenerator\bin\Debug\netcoreapp3.1\Faker.Net.Core.3.1.dll
 C:\Projects\RandomDataGenerator\RandomDataGenerator\RandomDataGenerator\bin\Debug\netcoreapp3.1\de-DE\Faker.Net.Core.3.1.resources.dll
+C:\Projects\RandomDataGenerator\RandomDataGenerator\RandomDataGenerator\bin\Debug\netcoreapp3.1\Oracle.EntityFrameworkCore.dll
+C:\Projects\RandomDataGenerator\RandomDataGenerator\RandomDataGenerator\bin\Debug\netcoreapp3.1\Oracle.ManagedDataAccess.dll
+C:\Projects\RandomDataGenerator\RandomDataGenerator\RandomDataGenerator\bin\Debug\netcoreapp3.1\System.Collections.Immutable.dll
+C:\Projects\RandomDataGenerator\RandomDataGenerator\RandomDataGenerator\bin\Debug\netcoreapp3.1\System.Diagnostics.DiagnosticSource.dll
+C:\Projects\RandomDataGenerator\RandomDataGenerator\RandomDataGenerator\obj\Debug\netcoreapp3.1\RandomDataGenerator.csproj.CoreCompileInputs.cache

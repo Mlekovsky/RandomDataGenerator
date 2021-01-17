@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 
 namespace RandomDataGenerator.Models
 {
+    [Serializable]
     public partial class Tgroup
     {
         public Tgroup()
@@ -18,7 +20,7 @@ namespace RandomDataGenerator.Models
         public DateTime? UpdateDate { get; set; }
         public decimal Rowversion { get; set; }
         public string CreateUser { get; set; }
-
+        [XmlIgnoreAttribute]
         public virtual ICollection<Tusergroup> Tusergroup { get; set; }
     }
 }

@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 
 namespace RandomDataGenerator.Models
 {
+    [Serializable]
     public partial class Tbookelement
     {
         public int Id { get; set; }
@@ -15,8 +17,11 @@ namespace RandomDataGenerator.Models
         public decimal Rowversion { get; set; }
         public string CreateUser { get; set; }
 
+        [XmlIgnoreAttribute]
         public virtual Tbooking Tbooking { get; set; }
+        [XmlIgnoreAttribute]
         public virtual Tflight Tflight { get; set; }
+        [XmlIgnoreAttribute]
         public virtual Thotel Thotel { get; set; }
     }
 }

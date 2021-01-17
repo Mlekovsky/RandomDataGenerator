@@ -1,14 +1,21 @@
 ﻿using FizzWare.NBuilder;
+using Oracle.ManagedDataAccess.Client;
 using RandomDataGenerator.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Json;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
+using System.Xml.Linq;
+using System.Xml.Serialization;
 
 namespace RandomDataGenerator
 {
@@ -44,7 +51,7 @@ namespace RandomDataGenerator
                         {
                             BuilderSetup.DisablePropertyNamingFor<Tbookelement, int>(x => x.Id);
                             BuilderSetup.DisablePropertyNamingFor<Tbooking, int>(x => x.Id);
-                            BuilderSetup.DisablePropertyNamingFor<Tbooking, int>(x => x.Bookno);
+                            BuilderSetup.DisablePropertyNamingFor<Tbooking, string>(x => x.Bookno);
                             BuilderSetup.DisablePropertyNamingFor<Tbookingpax, int>(x => x.Id);
                             BuilderSetup.DisablePropertyNamingFor<Tcustomer, int>(x => x.Id);
 
@@ -320,6 +327,32 @@ namespace RandomDataGenerator
 
         private void RegionButton_Click(object sender, EventArgs e)
         {
+            //            OracleConnection con = new OracleConnection();
+            //     //       con.ConnectionString = "user id=s95571;password=rg45a!kahe75;data source=" +
+            //     //"(DESCRIPTION=(ADDRESS=(PROTOCOL=tcp)" +
+            //     //"(HOST=217.173.198.135)(PORT=1522))(CONNECT_DATA=" +
+            //     //"(SERVICE_NAME=orcltp)))";
+            //            con.ConnectionString = @"User Id=s95571;Password=rg45a!kahe75;Data Source=(DESCRIPTION =
+            //(ADDRESS_LIST =
+            //(ADDRESS =
+            //(COMMUNITY = TCP)
+            //(PROTOCOL = TCP)
+            //(HOST = 217.173.198.135)
+            //(PORT = 1522)
+            //)
+            //)
+            //(CONNECT_DATA = (SID = orcltp))
+            //)";
+            //            try
+            //            {
+            //                con.Open();
+
+            //            }
+            //            catch(Exception ex)
+            //            {
+            //                Console.WriteLine();
+            //            }
+
             var numberGen = new RandomGenerator();
 
             var value = ValueTextbox.Text;
@@ -509,6 +542,264 @@ namespace RandomDataGenerator
             {
                 MessageBox.Show("Podaj poprawną liczbę");
             }
+        }
+
+        private void ExportButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (var context = new Aplikacje_bazodanoweContext())
+                {
+                    int exportCoutner = 0;
+
+                    if (tbookelement_cb.Checked)
+                    {
+                        var data = context.Tbookelement.ToList();
+
+                        ExportTable("Tbookelement_data.xml", data);
+
+                        exportCoutner++;
+                    }
+
+                    if (tbooking_cb.Checked)
+                    {
+                        var t = context.Tbooking.FirstOrDefault(x => x.Id == 11);
+                        var data = context.Tbooking.ToList();
+
+                        ExportTable("Tboooking_data.xml", data);
+
+                        exportCoutner++;
+                    }
+
+                    if (tbookingpax_cb.Checked)
+                    {
+                        var data = context.Tbookingpax.ToList();
+
+                        ExportTable("Tbookingpax_data.xml", data);
+
+                        exportCoutner++;
+                    }
+
+                    if (tbookstate_cb.Checked)
+                    {
+                        var data = context.Tbookstate.ToList();
+
+                        ExportTable("Tbookstate_data.xml", data);
+
+                        exportCoutner++;
+                    }
+
+                    if (tcountry_cb.Checked)
+                    {
+                        var data = context.Tcountry.ToList();
+
+                        ExportTable("Tcountry_data.xml", data);
+
+                        exportCoutner++;
+                    }
+
+                    if (tcustomer_cb.Checked)
+                    {
+                        var data = context.Tcustomer.ToList();
+
+                        ExportTable("Tcustomer_data.xml", data);
+
+                        exportCoutner++;
+                    }
+
+                    if (tflight_cb.Checked)
+                    {
+                        var data = context.Tflight.ToList();
+
+                        ExportTable("Tflight_data.xml", data);
+
+                        exportCoutner++;
+                    }
+
+                    if (tgroup_cb.Checked)
+                    {
+                        var data = context.Tgroup.ToList();
+
+                        ExportTable("Tgroup_data.xml", data);
+
+                        exportCoutner++;
+                    }
+
+                    if (thotel_cb.Checked)
+                    {
+                        var data = context.Thotel.ToList();
+
+                        ExportTable("Thotel_data.xml", data);
+
+                        exportCoutner++;
+                    }
+
+                    if (thotelinfo_cb.Checked)
+                    {
+                        var data = context.Thotelinfo.ToList();
+
+                        ExportTable("Thotelinfo_data.xml", data);
+
+                        exportCoutner++;
+                    }
+
+                    if (tlanguage_cb.Checked)
+                    {
+                        var data = context.Tlanguage.ToList();
+
+                        ExportTable("Tlanguage_data.xml", data);
+
+                        exportCoutner++;
+                    }
+
+                    if (tregion_cb.Checked)
+                    {
+                        var data = context.Tregion.ToList();
+
+                        ExportTable("Tregion_data.xml", data);
+
+                        exportCoutner++;
+                    }
+
+                    if (tuser_cb.Checked)
+                    {
+                        var data = context.Tuser.ToList();
+
+                        ExportTable("Tuser_data.xml", data);
+
+                        exportCoutner++;
+                    }
+
+                    if (tusergroup_cb.Checked)
+                    {
+                        var data = context.Tusergroup.ToList();
+
+                        ExportTable("Tusergroup_data.xml", data);
+
+                        exportCoutner++;
+                    }
+
+                    MessageBox.Show(@$"Finished exporting {exportCoutner} files!");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(@$"Error: {ex.Message}");
+            }
+        }
+
+        private string getExportPath => @"C:\Studia\XML\";
+
+        private void ExportTable<T>(string fileName, List<T> data)
+        {
+            Serializator.Serialize<T>(string.Concat(getExportPath, @"\", fileName), data);
+        }
+
+        private void ImportButton_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFile = new OpenFileDialog();
+
+            openFile.DefaultExt = "*.xml";
+            openFile.Multiselect = true;
+
+            if (openFile.ShowDialog() == System.Windows.Forms.DialogResult.OK &&
+               openFile.FileName.Length > 0)
+            {
+                using (var context = new Aplikacje_bazodanoweContext())
+                {
+                    try
+                    {
+                        foreach (var fileName in openFile.SafeFileNames)
+                        {
+                            switch (fileName)
+                            {
+                                case "Tbookelement_data.xml":
+                                    var data = LoadXmlFile<Tbookelement>(string.Concat(getExportPath, @"\", fileName));
+                                    context.Tbookelement.AddRange(data);
+                                    context.SaveChanges();
+                                    break;
+                                case "Tbooking_data.xml":
+                                    var bookings = LoadXmlFile<Tbooking>(string.Concat(getExportPath, @"\", fileName));
+                                    context.Tbooking.AddRange(bookings);
+                                    context.SaveChanges();
+                                    break;
+                                case "Tbookingpax_data.xml":
+                                    var paxes = LoadXmlFile<Tbookingpax>(string.Concat(getExportPath, @"\", fileName));
+                                    context.Tbookingpax.AddRange(paxes);
+                                    context.SaveChanges();
+                                    break;
+                                case "Tbookstate_data.xml":
+                                    var states = LoadXmlFile<Tbookstate>(string.Concat(getExportPath, @"\", fileName));
+                                    context.Tbookstate.AddRange(states);
+                                    context.SaveChanges();
+                                    break;
+                                case "Tcountry_data.xml":
+                                    var countries = LoadXmlFile<Tcountry>(string.Concat(getExportPath, @"\", fileName));
+                                    context.Tcountry.AddRange(countries);
+                                    context.SaveChanges();
+                                    break;
+                                case "Tcustomer_data.xml":
+                                    var customers = LoadXmlFile<Tcustomer>(string.Concat(getExportPath, @"\", fileName));
+                                    context.Tcustomer.AddRange(customers);
+                                    context.SaveChanges();
+                                    break;
+                                case "Tflight_data.xml":
+                                    var flights = LoadXmlFile<Tflight>(string.Concat(getExportPath, @"\", fileName));
+                                    context.Tflight.AddRange(flights);
+                                    context.SaveChanges();
+                                    break;
+                                case "Tgroup_data.xml":
+                                    var groups = LoadXmlFile<Tgroup>(string.Concat(getExportPath, @"\", fileName));
+                                    context.Tgroup.AddRange(groups);
+                                    context.SaveChanges();
+                                    break;
+                                case "Thotel_data.xml":
+                                    var hotels = LoadXmlFile<Thotel>(string.Concat(getExportPath, @"\", fileName));
+                                    context.Thotel.AddRange(hotels);
+                                    context.SaveChanges();
+                                    break;
+                                case "Thotelinfo_data.xml":
+                                    var hotelinfo = LoadXmlFile<Thotelinfo>(string.Concat(getExportPath, @"\", fileName));
+                                    context.Thotelinfo.AddRange(hotelinfo);
+                                    context.SaveChanges();
+                                    break;
+                                case "Tlanguage_data.xml":
+                                    var languagues = LoadXmlFile<Tlanguage>(string.Concat(getExportPath, @"\", fileName));
+                                    context.Tlanguage.AddRange(languagues);
+                                    context.SaveChanges();
+                                    break;
+                                case "Tregion_data.xml":
+                                    var regions = LoadXmlFile<Tregion>(string.Concat(getExportPath, @"\", fileName));
+                                    context.Tregion.AddRange(regions);
+                                    context.SaveChanges();
+                                    break;
+                                case "Tuser_data.xml":
+                                    var users = LoadXmlFile<Tuser>(string.Concat(getExportPath, @"\", fileName));
+                                    context.Tuser.AddRange(users);
+                                    context.SaveChanges();
+                                    break;
+                                case "Tusergroup_data.xml":
+                                    var usergroups = LoadXmlFile<Tusergroup>(string.Concat(getExportPath, @"\", fileName));
+                                    context.Tusergroup.AddRange(usergroups);
+                                    context.SaveChanges();
+                                    break;
+
+                                default:
+                                    break;
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(@$"Error when importing files: {ex.InnerException}");
+                    }
+                }
+            }
+        }
+
+        private List<T> LoadXmlFile<T>(string fileName)
+        {
+            return Serializator.Deserialize<T>(fileName).ToList();
         }
     }
 }
